@@ -1,22 +1,69 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 
 .myContainer {
-display: flex;
-  justify-content: center; 
+  display: flex;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
+  
 }
 
-.myCards{
+.myCards {
+  display: flex;
+  flex-wrap: wrap;
   margin: 10%;
+  animation: fadeIn 1s ease-in-out;
+
 }
 
-.myCard{
-  height: 500px;
+.myCard {
   margin-bottom: 20px;
+  width: 330px;
+  height: 10%;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  transform: scale(1);
+}
+.myCard:hover {
+  transform: scale(1.05);
+
 }
 
-.search-bar{
+.myHeader {
+  text-align: center;
+  width: 100%;
+
+}
+
+.search-bar {
   width: 30%;
-  margin-top: 10%;
+  margin: 0 auto;
+
+}
+
+.myHeader h1 {
+  margin-bottom: 50px; /* Adjust the margin as needed */
+  padding: 100px;
+
+}
+
+.notFound {
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 100px;
+}
+
+.card {
+  border-width: 3px; /* Adjust the thickness as needed */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

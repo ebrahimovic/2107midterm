@@ -3,20 +3,20 @@ import { Card, Row, Col, Form, FormControl, Button } from 'react-bootstrap';
 import './App.css';
 
 const Key = 'a1970357721e47f6941c4fc09d42af48';
-const URL = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${Key}`;
+const URL = `https://newsapi.org/v2/everything?q=apple&sortBy=popularity&apiKey=${Key}`;
 
-function NewsCard({ title, text, imgSrc, url }) {
+// Array of border colors
+const borderColors = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark'];
+
+function NewsCard({ title, text, imgSrc, url, index }) {
+  const borderColor = borderColors[index % borderColors.length]; // Use modulo to cycle through colors
   return (
-    <Card>
-      <Card.Img
-        variant="top"
-        src={imgSrc}
-        style={{ width: '100%', height: '200px' }} 
-      />
-      <Card.Body >
+    <Card border={borderColor}>
+      <Card.Img variant="top" src={imgSrc} style={{ width: '100%', height: '200px' }} />
+      <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Text>{text}</Card.Text>
-        <Button variant="primary" onClick={() => window.open(url, '_blank')}>
+        <Button variant={borderColor} onClick={() => window.open(url, '_blank')}>
           Go to Article
         </Button>
       </Card.Body>
@@ -54,32 +54,41 @@ function HomePage(props) {
   );
 
   return (
-    
-    <div className="myContainer ">
-      <h1> News</h1>
-      <div className="search-bar ">
-        <Form>
-          <FormControl
-            type="text"
-            placeholder="Search"
-            value={searchTerm}
-            onChange={handleSearchChange}
-          />
-        </Form>
-      </div>
-
-      <Row xs={1} md={3} className="myCards">
-        {filteredNews.map((newsItem, index) => (
-          <Col key={index} className='myCard'>
-            <NewsCard
-              title={newsItem.title}
-              text={newsItem.description}
-              imgSrc={newsItem.urlToImage}
-              url={newsItem.url}
+    <div>
+      <div className="myHeader">
+        <h1>News</h1>
+        <div className='search-bar'>
+          <Form>
+            <FormControl
+              type="text"
+              placeholder="Search"
+              value={searchTerm}
+              onChange={handleSearchChange}
             />
-          </Col>
-        ))}
-      </Row>
+          </Form>
+        </div>
+      </div>
+      <div className="myContainer">
+        {filteredNews.length === 0 ? (
+          <div className="notFound">
+            <p>No results found, please try something else.</p>
+          </div>
+        ) : (
+          <Row xs={1} md={3} className="myCards">
+            {filteredNews.map((newsItem, index) => (
+              <Col key={index} className="myCard">
+                <NewsCard
+                  title={newsItem.title}
+                  text={newsItem.description}
+                  imgSrc={newsItem.urlToImage}
+                  url={newsItem.url}
+                  index={index} // Pass the index to NewsCard
+                />
+              </Col>
+            ))}
+          </Row>
+        )}
+      </div>
     </div>
   );
 }
