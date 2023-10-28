@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Card from 'react-bootstrap/Card';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl';
-import Button from 'react-bootstrap/Button';
+import { Card, Row, Col, Form, FormControl, Button } from 'react-bootstrap';
 import './App.css';
 
 const Key = 'a1970357721e47f6941c4fc09d42af48';
@@ -12,7 +7,7 @@ const URL = `https://newsapi.org/v2/top-headlines?country=us&category=business&a
 
 function NewsCard({ title, text, imgSrc, url }) {
   return (
-    <Card style={{ width: '100%', height: '500px' }} >
+    <Card>
       <Card.Img
         variant="top"
         src={imgSrc}
