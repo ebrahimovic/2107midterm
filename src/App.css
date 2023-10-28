@@ -1,0 +1,22 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+.myContainer {
+display: flex;
+  justify-content: center; 
+  align-items: center;
+  flex-direction: column;
+}
+
+.myCards{
+  margin: 10%;
+}
+
+.myCard{
+  height: 500px;
+  margin-bottom: 20px;
+}
+
+.search-bar{
+  width: 30%;
+  margin-top: 10%;
+}
