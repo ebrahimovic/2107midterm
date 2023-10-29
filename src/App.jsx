@@ -113,7 +113,7 @@ function HomePage(props) {
   return (
     <div>
       <div className="myHeader">
-        <h1>News</h1>
+        <h1>Apple News</h1>
         <div className='search-bar'>
           <Form>
             <FormControl
