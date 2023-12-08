@@ -10,7 +10,7 @@ const initialPage = 1;
 const cardsPerPage = 24; 
 let totalArticles = 0;
 let totalPages = 1;
-let URL = `https://newsapi.org/v2/everything?&apiKey=${Key}&page=${initialPage}`;
+//let URL = `https://newsapi.org/v2/everything?&apiKey=${Key}&page=${initialPage}`;
 
 
 const borderColors = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark'];
